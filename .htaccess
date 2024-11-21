@@ -1,0 +1,12 @@
+# Enable RewriteEngine
+RewriteEngine On
+
+# Check if the requested URL is NOT a file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirect all requests to send.php with the shortCode
+RewriteRule ^(.+)$ send.php?shortCode=$1 [QSA,L]
+
+# If nothing is entered in the URL, serve index.php
+RewriteRule ^$ index.php [L]
